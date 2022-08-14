@@ -38,8 +38,8 @@ for is,vs in pairs(response) do
     
 
         local str= vs
-        str:gsub("%w+,",function(c) table.insert(t,c) end)
-        str:gsub(",%w+",function(c) table.insert(t,c) end)
+        str:gsub(".+,",function(c) table.insert(t,c) end)
+        str:gsub(",.+",function(c) table.insert(t,c) end)
 
         for i,v in pairs(t) do
 
