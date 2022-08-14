@@ -60,7 +60,7 @@ for is,vs in pairs(response) do
                             }
                         )
                         
-                        print("User:"..v.."đã block user có id "..userid1)
+                        print("User:"..v.." đã block user có id "..userid1)
                         wait(0.0)
                         
                 end
