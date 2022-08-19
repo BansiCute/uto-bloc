@@ -134,7 +134,7 @@ spawn(function()
             end
             local Meleehienco = MeleeA .. "" .. MeleeB .. "" .. MeleeC .. "" .. MeleeD .. "" .. MeleeF
             
-                MyAccount:SetDescription(gamehientai.."Level: "..level.." Beli: "..beli.." Fragments: "..frag.."\nInventory: "..wpstorage.."\nFruit Rare:  "..frutidangco.."\nRace: "..race.."\nMelee: "..Meleehienco)
+                MyAccount:SetDescription(gamehientai.."Level: "..level.." Beli: "..beli.." Fragments: "..frag.."\nInventory: "..wpstorage.."\nFruit Rare:  "..frutidangco.."\nRace: "..race.."\nMelee: "..Meleehienco.."\nMade by IceLion32#7923")
             
             end                
 		end)
