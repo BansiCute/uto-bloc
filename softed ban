@@ -145,6 +145,7 @@ _Block_All_Hop = true
 _WhiteScreen = true
 _BestSheetUrl= "https://sheet.best/api/sheets/346b91d4-390c-430d-83f6-812bb6c47eff"
 _BuyFruitSinper = true -- true or false
+_3meleebe = true
 _SelectDevil = {"Dark-Dark","Quake-Quake","Human-Human: Buddha","Bird-Bird: Phoenix","Rumble-Rumble","Dough-Dough","Shadow-Shadow","Venom-Venom","Soul-Soul","Dragon-Dragon"}--   "Bomb-Bomb","Spike-Spike","Chop-Chop","Spring-Spring","Kilo-Kilo","Spin-Spin","Bird: Falcon","Smoke-Smoke","Flame-Flame","Ice-Ice","Sand-Sand","Dark-Dark","Revive-Revive","Diamond-Diamond","Light-Light","Love-Love","Rubber-Rubber","Barrier-Barrier","Magma-Magma","Door-Door","Quake-Quake","Human-Human: Buddha","String-String","Bird-Bird: Phoenix","Rumble-Rumble","Paw-Paw","Gravity-Gravity","Dough-Dough","Shadow-Shadow","Venom-Venom","Control-Control","Soul-Soul","Dragon-Dragon"
 _G.KAITAN1CLICK = true -- true / false
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BansiCute/ban/main/table%20new%20crack"))()
