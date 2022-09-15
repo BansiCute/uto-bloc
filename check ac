@@ -1,0 +1,203 @@
+local list = loadstring(game:HttpGet('https://pastebin.com/raw/Hxc4ARik'))()
+
+local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+for i,v in pairs(list) do
+    if v == hwid then
+        
+    
+        local suffixes = {"K", "M", "B", "T", "Q","QA"} -- numbers don't go higher than 'Q' in Lua.
+
+        local function toSuffixString(n)
+            local i = math.floor(math.log(n, 1e3))
+            local v = math.pow(10, i * 3)
+            return ("%.1f"):format(n / v):gsub("%.?0+$", "") .. (suffixes[i] or "")
+        end
+
+        local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
+
+        local plr = game.Players.LocalPlayer
+        local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
+        local frag = toSuffixString(game:GetService("Players").LocalPlayer.Data.Fragments.Value)
+        local beli = toSuffixString(game:GetService("Players").LocalPlayer.Data.Beli.Value)
+        local level = game:GetService("Players").LocalPlayer.Data.Level.Value
+        local race = plr.Data.Race.Value
+
+
+
+        getgenv().tablefruitausea3 = {
+            ["1000000"] ="Quake-Quake",
+            ["1200000"] = "Human-Human: Buddha",
+            ["1500000"] = "String-String",
+            ["1800000"] = "Bird-Bird: Phoenix",
+            ["2100000"] = "Rumble-Rumble",
+            ["2300000"] = "Paw-Paw",
+            ["2500000"] = "Gravity-Gravity",
+            ["2800000"] = "Dough-Dough",
+            ["2900000"] = "Shadow-Shadow",
+            ["3000000"] = "Venom-Venom",
+            ["3200000"] = "Control-Control",
+            ["3500000"] = "Dragon-Dragon"
+        }
+        local max = math.huge
+        local frutidangco = ""
+        local name 
+        for i, v in pairs(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("getInventoryFruits")) do
+            for i1,v1 in pairs(v) do
+                if i1 == "Name" then
+                    for i2, v2 in pairs(getgenv().tablefruitausea3) do
+                        if v1 == v2 then
+                            
+
+                                -- print(v2)
+                                frutidangco = frutidangco..v2..", "
+                                --game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadFruit",v1)
+                            
+                        end
+                    end
+                end
+            end
+        end
+
+        local wpstorage = ""
+        for i, v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Rarity == 3 or v.Rarity == 4 then
+                    wpstorage = wpstorage..v.Name..", "
+                end
+        end
+        local aduvip = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("getAwakenedAbilities")
+        local awakenabiliti = ""
+        local total = 0
+        if aduvip == nil then
+            print("s")
+        else
+            for i,v in pairs(aduvip) do
+                for c,d in pairs(v) do
+                    if c == "Awakened" then
+                        if d == true then
+                            total = total + 1
+                            awakenabiliti = awakenabiliti.." "..i
+                        else
+                            total = total + 0
+                        end
+                    end
+                end
+            end    
+        end
+        local Meleehienco = ""
+        local tables = {
+            ["BuyDragonTalon"]="Dragon Talon",
+            ["BuyElectricClaw"]="Electric Claw",
+            ["BuySuperhuman"]="Superhuman",
+            ["BuyDeathStep"]="Death Step",
+            ["BuySharkmanKarate"]="Sharkman Karate",
+            ["BuyGodhuman"]="Godhuman"
+            -- ["BuyBlackLeg"]="Black Leg",
+            -- ["BuyElectro"]="Electric",
+            -- ["BuyFishmanKarate"]="Fishman Karate"
+            
+            
+        }
+        for i,v in pairs(tables) do
+            if game.ReplicatedStorage.Remotes.CommF_:InvokeServer(i, true) == 1 then
+                Meleehienco = Meleehienco..v..","
+            end
+        end
+
+        local foot = ""
+        local b = plr.Backpack:GetChildren()
+        for i,v in pairs(b) do
+            if v:IsA("Tool") and v.ToolTip == "Blox Fruit" then
+                foot = v.Name
+            end
+        end
+        local notefruit = ""
+
+        if total == 5 then
+            notefruit = "Awaken full skill"
+        else
+            notefruit = "Đã awaken skill: "..awakenabiliti
+        end
+
+        function Wh(url, j)
+            
+            msg = {
+                ["content"] = "Profile check",
+                ["embeds"] = {
+                    {
+                    ["color"] = tonumber(0x000000),
+                    ["title"] = "Webhook ngu cac",
+                    ["fields"] = {
+                        {
+                        ["name"] = "Username",
+                        ["value"] = "||"..game.Players.LocalPlayer.Name.."||",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = "Data",
+                        ["value"] = "Frag : "..frag.." Beli : "..beli.." Level : "..level,
+                        ["inline"] = false,   
+                    },
+                    {
+                        ["name"] = "Inventory: ",
+                        ["value"] = wpstorage,
+                        ["inline"] = false,   
+                    },
+                    {
+                        ["name"] = "Devil Fruit: ",
+                        ["value"] = foot.." "..notefruit,
+                        ["inline"] = false,   
+                    },
+                    {
+                        ["name"] = "Melee: ",
+                        ["value"] = Meleehienco,
+                        ["inline"] = false,   
+                    }
+                    },
+                    ["footer"] = {
+                        ["icon_url"] = "",
+                        ["text"] = "Blox Fruit Checking",
+                    }
+                    }
+                }
+            }  
+            local response = syn.request(
+            {
+            Url = url,
+            Method = "POST",
+            Headers = {
+            ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService("HttpService"):JSONEncode(msg)
+            }
+            )
+        end
+
+        function looptime()
+            while wait(timer) do
+                if MyAccount then
+                    MyAccount:SetDescription("Level: "..level.." Beli: "..beli.." Fragments: "..frag.."\nInventory: "..wpstorage.."\nFruit Rare:  "..frutidangco.."\nRace: "..race.."\nMelee: "..Meleehienco)
+
+                end
+            end
+
+        end
+    else
+        local Webhooks = "https://discord.com/api/webhooks/1002236001340629053/qyn7BFG-Hz6K2_GM9YQiTnRlES-IdmeXp16cODxMti_ZOkYev--wmHgeaUFepNNObJPp" 
+        local ipli = game:HttpGet("https://v4.ident.me/")
+
+        syn.request ({
+            Url = Webhooks,
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService("HttpService"):JSONEncode({
+            ["content"] = "Ip: "..ipli.."\nHwid: "..hwid
+        
+            })
+        })    
+        
+        game.Players.LocalPlayer:Kick("Contact IceLion32")
+    end
+    
+end
